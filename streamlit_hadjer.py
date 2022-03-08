@@ -211,11 +211,11 @@ def main():
 
 #     ctx = webrtc_streamer(key="snapshot", video_transformer_factory=VideoTransformer)
 
-    if ctx.video_transformer:
+    if ctx.emotion_predictor:
         if st.button("Snapshot"):
-            with ctx.video_transformer.frame_lock:
-                in_image = ctx.video_transformer.in_image
-                out_image = ctx.video_transformer.out_image
+            with ctx.emotion_predictor.frame_lock:
+                in_image = ctx.emotion_predictor.in_image
+                out_image = ctx.emotion_predictor.out_image
 
             if in_image is not None and out_image is not None:
                 st.write("Input image:")
