@@ -209,7 +209,7 @@ def main():
         
 
 
-#     ctx = webrtc_streamer(key="snapshot", video_transformer_factory=VideoTransformer)
+    ctx = webrtc_streamer(key="snapshot", video_transformer_factory=EmotionPredictor)
 
     if ctx.emotion_predictor:
         if st.button("Snapshot"):
