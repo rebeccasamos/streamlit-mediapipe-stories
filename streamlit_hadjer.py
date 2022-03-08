@@ -158,7 +158,7 @@ def app_emotion_detection():
 
             return out_image
 
-    webrtc_ctx = webrtc_streamer(
+    ctx = webrtc_streamer(
         key="emotion-detection",
         mode=WebRtcMode.SENDRECV,
         rtc_configuration=RTC_CONFIGURATION,
@@ -211,19 +211,19 @@ def main():
 
 #     ctx = webrtc_streamer(key="snapshot", video_transformer_factory=VideoTransformer)
 
-#     if ctx.video_transformer:
-#         if st.button("Snapshot"):
-#             with ctx.video_transformer.frame_lock:
-#                 in_image = ctx.video_transformer.in_image
-#                 out_image = ctx.video_transformer.out_image
+    if ctx.video_transformer:
+        if st.button("Snapshot"):
+            with ctx.video_transformer.frame_lock:
+                in_image = ctx.video_transformer.in_image
+                out_image = ctx.video_transformer.out_image
 
-#             if in_image is not None and out_image is not None:
-#                 st.write("Input image:")
-#                 st.image(in_image, channels="BGR")
-#                 st.write("Output image:")
-#                 st.image(out_image, channels="BGR")
-#             else:
-#                 st.warning("No frames available yet.")
+            if in_image is not None and out_image is not None:
+                st.write("Input image:")
+                st.image(in_image, channels="BGR")
+                st.write("Output image:")
+                st.image(out_image, channels="BGR")
+            else:
+                st.warning("No frames available yet.")
         
         
       
