@@ -118,7 +118,7 @@ def app_emotion_detection():
 
                 # #draw emotion on images
                 cv2.putText(image2, f'{prediction} {str(score)}', (start_point[0]-50, start_point[1]-30), cv2.FONT_HERSHEY_COMPLEX_SMALL,
-                                 2, (255, 0, 255), 2)
+                                 2, (255, 255, 255), 2)
 
 
                 #draw rectangle arouond face
