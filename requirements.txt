@@ -1,3 +1,4 @@
+numpy
 
 #for streamlit
 streamlit==1.2.0
@@ -15,5 +16,4 @@ mediapipe
 cvzone
 
 #other
-numpy
 matplotlib
