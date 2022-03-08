@@ -122,7 +122,7 @@ def app_emotion_detection():
 
 
                 #draw rectangle arouond face
-                cv2.rectangle(image2, start_point, end_point,(204,255,204), 2)
+                cv2.rectangle(image2, start_point, end_point,(255,255,255), 2)
 
             return faces, image2
 
