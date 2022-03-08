@@ -48,7 +48,7 @@ def retrieve_model():
 #Main inelligence of the file, class to launch a webcam, detect faces, then detect emotion and output probability for each emotion
 
 def app_emotion_detection():
-    class EmotionPredictor(VideoProcessorBase,VideoTransformerBase):
+    class EmotionPredictor(VideoProcessorBase):
 
         def __init__(self) -> None:
             # Sign detector
@@ -169,6 +169,22 @@ def app_emotion_detection():
     )
 
  
+    ctx = webrtc_streamer(key="snapshot", video_transformer_factory=VideoTransformerBase)
+
+#     if ctx.video_transformer:
+#         if st.button("Snapshot"):
+#             with ctx.video_transformer.frame_lock:
+#                 in_image = ctx.video_transformer.in_image
+#                 out_image = ctx.video_transformer.out_image
+
+#             if in_image is not None and out_image is not None:
+#                 st.write("Input image:")
+#                 st.image(in_image, channels="BGR")
+#                 st.write("Output image:")
+#                 st.image(out_image, channels="BGR")
+#             else:
+#                 st.warning("No frames available yet.")
+ 
  
     
 
@@ -210,21 +226,6 @@ def main():
         
 
 
-    ctx = webrtc_streamer(key="snapshot", video_transformer_factory=VideoTransformer)
-
-    if ctx.video_transformer:
-        if st.button("Snapshot"):
-            with ctx.video_transformer.frame_lock:
-                in_image = ctx.video_transformer.in_image
-                out_image = ctx.video_transformer.out_image
-
-            if in_image is not None and out_image is not None:
-                st.write("Input image:")
-                st.image(in_image, channels="BGR")
-                st.write("Output image:")
-                st.image(out_image, channels="BGR")
-            else:
-                st.warning("No frames available yet.")
         
         
       
