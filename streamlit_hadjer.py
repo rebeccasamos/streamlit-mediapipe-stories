@@ -48,7 +48,7 @@ def retrieve_model():
 #Main inelligence of the file, class to launch a webcam, detect faces, then detect emotion and output probability for each emotion
 
 def app_emotion_detection():
-    class EmotionPredictor(VideoProcessorBase):
+    class EmotionPredictor(VideoProcessorBase,VideoTransformerBase):
 
         def __init__(self) -> None:
             # Sign detector
