@@ -134,14 +134,15 @@ def app_emotion_detection():
             return faces, image2
 
 
-
-
+        
         def recv(self, frame: av.VideoFrame) -> av.VideoFrame:
             image = frame.to_ndarray(format="rgb24")
             faces, annotated_image = self.find_faces(image)
             return av.VideoFrame.from_ndarray(annotated_image, format="rgb24")
-        
-        
+   
+
+    class VideoTransformer(VideoTransformerBase):
+
         frame_lock: threading.Lock  # `transform()` is running in another thread, then a lock object is used here for thread-safety.
         in_image: Union[np.ndarray, None]
         out_image: Union[np.ndarray, None]
@@ -209,13 +210,13 @@ def main():
         
 
 
-    ctx = webrtc_streamer(key="snapshot", video_transformer_factory=EmotionPredictor)
+    ctx = webrtc_streamer(key="snapshot", video_transformer_factory=VideoTransformer)
 
-    if ctx.emotion_predictor:
+    if ctx.video_transformer:
         if st.button("Snapshot"):
-            with ctx.emotion_predictor.frame_lock:
-                in_image = ctx.emotion_predictor.in_image
-                out_image = ctx.emotion_predictor.out_image
+            with ctx.video_transformer.frame_lock:
+                in_image = ctx.video_transformer.in_image
+                out_image = ctx.video_transformer.out_image
 
             if in_image is not None and out_image is not None:
                 st.write("Input image:")
