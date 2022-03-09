@@ -190,9 +190,6 @@ def app_emotion_detection():
 ############################ About #################################################
 
 st.markdown(f'''
-# Homepage (Intro)
-
-Created: March 8, 2022 10:43 AM
 
 # Happy, with 20% chance of sadness
 
@@ -204,6 +201,11 @@ Created: March 8, 2022 10:43 AM
 Artificial Intelligence technology is developing fast. Whist AI technologies stride to improve efficiency in our everyday lives, the soft side[not sure] of AI is still falling behind. Since we will be interacting with computers more than ever, we see that it is crucial to develop AI that communicates smoothly to us just like another human. This allows the endless possibilities to advance AI applications in areas such as caring for elderlies or detecting drunk drivers. As a result, we spun off a Facial Expression Detector model. The model is trained by deep learning CNNs model [[and VGG16 transfer learning?]] to detect human emotions from the camera.
 
 ### Try it out yourself
+''')
+
+app_emotion_detection()
+
+st.markdown(f'''
 
 Navigate to the ‘Live Camera’ section 👈 for the show!
 
