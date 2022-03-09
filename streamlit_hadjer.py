@@ -24,8 +24,6 @@ from typing import Union
 import cv2
 from cvzone.FaceDetectionModule import FaceDetector
 
-#Background
-import base64
 
 
 RTC_CONFIGURATION = RTCConfiguration(
@@ -192,34 +190,9 @@ def app_emotion_detection():
 ############################ Background #################################################
 
 
-@st.cache
-def load_image(path):
-    with open(path, 'rb') as f:
-        data = f.read()
-    encoded = base64.b64encode(data).decode()
-    return encoded
-
-def image_tag(path):
-    encoded = load_image(path)
-    tag = f'<img src="data:image/png;base64,{encoded}">'
-    return tag
-
-def background_image_style(path):
-    encoded = load_image(path)
-    style = f'''
-    <style>
-    .stApp {{
-        background-image: url("data:image/png;base64,{encoded}");
-        background-size: cover;
-    }}
-    </style>
-    '''
-    return style
-
-image_path = 'images/face-detection.jpeg'
-
-st.write(background_image_style(image_path), unsafe_allow_html=True)
-
+from PIL import Image
+image = Image.open(image_path)
+st.image(image, caption='Le Wagon', use_column_width=False)
 
 ############################ About #################################################
 
