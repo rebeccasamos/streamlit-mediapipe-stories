@@ -190,10 +190,10 @@ def app_emotion_detection():
 ############################ Background #################################################
 
 
-from PIL import Image
-image_path = './image/face-detection.jpeg'
-image = Image.open(image_path)
-st.image(image, caption='Le Wagon', use_column_width=False)
+# from PIL import Image
+# image_path = './image/face-detection.jpeg'
+# image = Image.open(image_path)
+# st.image(image, caption='Le Wagon', use_column_width=False)
 
 ############################ About #################################################
 
