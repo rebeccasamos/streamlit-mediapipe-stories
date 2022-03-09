@@ -187,7 +187,38 @@ def app_emotion_detection():
  
  
     
+############################ About #################################################
 
+st.markdown(f'''
+# Homepage (Intro)
+
+Created: March 8, 2022 10:43 AM
+
+# Happy, with 20% chance of sadness
+
+> Deep learning for AI facial detector
+> 
+
+### Helping Artificial Intelligence connect better to how we feel
+
+Artificial Intelligence technology is developing fast. Whist AI technologies stride to improve efficiency in our everyday lives, the soft side[not sure] of AI is still falling behind. Since we will be interacting with computers more than ever, we see that it is crucial to develop AI that communicates smoothly to us just like another human. This allows the endless possibilities to advance AI applications in areas such as caring for elderlies or detecting drunk drivers. As a result, we spun off a Facial Expression Detector model. The model is trained by deep learning CNNs model [[and VGG16 transfer learning?]] to detect human emotions from the camera.
+
+### Try it out yourself
+
+Navigate to the ‘Live Camera’ section 👈 for the show!
+
+### About our model
+
+CNNs model is trained with tensorflow [VGG16](https://www.tensorflow.org/api_docs/python/tf/keras/applications/vgg16/VGG16) transfer learning model. We use is [FER - CK+ - KDEF](https://www.kaggle.com/sudarshanvaidya/corrective-reannotation-of-fer-ck-kdef) ********dataset which ********contains 32,900 + images including 8 emotion categories – anger, contempt, disgust, fear, happiness, neutrality, sadness and surprise.
+
+For better results, we narrow down to 6 emotion categories – anger, disgust, fear, happiness, sadness and surprise.
+
+We finally ended up with 70% training accuracy and XX testing accuracy.
+''')
+
+    
+    
+    
 ############################ Sidebar + launching #################################################
 
 #object_detection_page = "Try our Emotional Live Detector!"
