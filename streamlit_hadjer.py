@@ -24,6 +24,9 @@ from typing import Union
 import cv2
 from cvzone.FaceDetectionModule import FaceDetector
 
+#Background
+import base64
+
 
 RTC_CONFIGURATION = RTCConfiguration(
     {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
@@ -134,12 +137,12 @@ def app_emotion_detection():
             return faces, image2
 
 
-        
+
         def recv(self, frame: av.VideoFrame) -> av.VideoFrame:
             image = frame.to_ndarray(format="rgb24")
             faces, annotated_image = self.find_faces(image)
             return av.VideoFrame.from_ndarray(annotated_image, format="rgb24")
-   
+
 
     class VideoTransformer(VideoTransformerBase):
 
@@ -168,7 +171,7 @@ def app_emotion_detection():
         async_processing=True,
     )
 
- 
+
 #     ctx = webrtc_streamer(key="snapshot", video_transformer_factory=VideoTransformerBase)
 
 #     if ctx.video_transformer:
@@ -184,9 +187,40 @@ def app_emotion_detection():
 #                 st.image(out_image, channels="BGR")
 #             else:
 #                 st.warning("No frames available yet.")
- 
- 
-    
+
+
+############################ Background #################################################
+
+
+@st.cache
+def load_image(path):
+    with open(path, 'rb') as f:
+        data = f.read()
+    encoded = base64.b64encode(data).decode()
+    return encoded
+
+def image_tag(path):
+    encoded = load_image(path)
+    tag = f'<img src="data:image/png;base64,{encoded}">'
+    return tag
+
+def background_image_style(path):
+    encoded = load_image(path)
+    style = f'''
+    <style>
+    .stApp {{
+        background-image: url("data:image/png;base64,{encoded}");
+        background-size: cover;
+    }}
+    </style>
+    '''
+    return style
+
+image_path = 'images/face-detection.jpeg'
+
+st.write(background_image_style(image_path), unsafe_allow_html=True)
+
+
 ############################ About #################################################
 
 st.markdown(f'''
@@ -194,7 +228,7 @@ st.markdown(f'''
 # Happy, with 20% chance of sadness
 
 > Deep learning for AI facial detector
-> 
+>
 
 ### Helping Artificial Intelligence connect better to how we feel
 
@@ -218,9 +252,9 @@ For better results, we narrow down to 6 emotion categories – anger, disgust, f
 We finally ended up with 70% training accuracy and XX testing accuracy.
 ''')
 
-    
-    
-    
+
+
+
 ############################ Sidebar + launching #################################################
 
 #object_detection_page = "Try our Emotional Live Detector!"
@@ -256,12 +290,12 @@ def main():
     elif choice ==  "Live Emotion Detector":
         app_emotion_detection()
 
-        
 
 
-        
-        
-      
+
+
+
+
 if __name__ == '__main__':
     main()
 
