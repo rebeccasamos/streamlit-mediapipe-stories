@@ -169,7 +169,7 @@ def app_emotion_detection():
     )
 
  
-    ctx = webrtc_streamer(key="snapshot", video_transformer_factory=VideoTransformerBase)
+#     ctx = webrtc_streamer(key="snapshot", video_transformer_factory=VideoTransformerBase)
 
 #     if ctx.video_transformer:
 #         if st.button("Snapshot"):
